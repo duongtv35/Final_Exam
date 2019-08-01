@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit-City</title>
+</head>
+
+<a href="/cities">Back to List</a>
+<body>
+<h1>Upgrades-cities
+    <th:block>
+        <p th:text="${city.name}"></p>
+    </th:block>
+</h1>
+<form th:action="@{/edit-city}" method="post" th:object="${city}">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>City</td>
+            <td><input type="text" th:field="*{name}"></td>
+        </tr>
+        <tr>
+            <td>Area</td>
+            <td><input type="text" th:field="*{area}"></td>
+        </tr>
+        <tr>
+            <td>Population</td>
+            <td><input type="text" th:field="*{population}"></td>
+        </tr>
+        <tr>
+            <td>GDP</td>
+            <td><input type="text" th:field="*{gdp}"></td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td><input type="text" th:field="*{description}"></td>
+        </tr>
+        <tr>
+            <td><select th:field="*{country}">
+                <option th:each="c : ${countries}" th:value="${c.id}" th:text="${c.name}"></option>
+            </select></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Upgrades"></td>
+        </tr>
+
+    </table>
+</form>
+</body>
+</html>
